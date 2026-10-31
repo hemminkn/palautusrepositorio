@@ -3,10 +3,10 @@ from player_reader import PlayerReader
 
 
 class StatisticsService:
-    def __init__(self):
-        reader = PlayerReader()
+    def __init__(self, playerreader_object):
+        self.reader = playerreader_object
 
-        self._players = reader.get_players()
+        self._players = self.reader.get_players()
 
     def search(self, name):
         for player in self._players:
