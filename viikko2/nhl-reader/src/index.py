@@ -3,24 +3,40 @@ from player import Player
 
 def main():
     url = "https://studies.cs.helsinki.fi/nhlstats/2024-25/players"
-    response = requests.get(url).json()
-
-    players = []
-
-    for player_dict in response:
-        player = Player(player_dict)
-        if player.nationality == "FIN":
-            players.append(player)
-
-    print("Players from FIN:")
-    print()
-    print()
-
-    players = sorted(players, key=lambda player: player.goals+player.assists, reverse=True)
+    reader = PlayerReader(url)
+    stats = PlayerStats(reader)
+    players = stats.top_scorers_by_nationality("FIN")
 
     for player in players:
-        points = f"{player.goals} + {player.assists} = {player.goals+player.assists}"
-        print(f"{player.name:20} {player.team:16} {points}")
+        print(player)
+
+class PlayerReader:
+    def __init__(self, url):
+        self.url = url
+        self.players = []
+        self.get_players()
+
+    def get_players(self):
+        response = requests.get(self.url).json()
+
+        for player_dict in response:
+            player = Player(player_dict)
+            self.players.append(player)
+
+class PlayerStats:
+    def __init__(self, reader):
+        self.reader = reader
+
+    def top_scorers_by_nationality(self, nationality):
+        n_players = []
+
+        for player in self.reader.players:
+            if player.nationality == nationality:
+                n_players.append(player)
+
+        top_players = sorted(n_players, key=lambda player: player.goals+player.assists, reverse=True)
+
+        return top_players
 
 if __name__ == "__main__":
     main()
