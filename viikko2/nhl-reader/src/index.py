@@ -38,5 +38,21 @@ class PlayerStats:
 
         return top_playas
 
+    def top_goal_scorers(self, how_many):
+        sorted_players = sorted(self.reader.players, key=lambda player: player.goals, reverse=True)
+        return sorted_players[:how_many]
+
+    def top_scorers_by_team(self, team):
+        team_players = [
+            player for player in self.reader.players
+            if player.team == team
+        ]
+
+        return sorted(
+            team_players,
+            key=lambda player: player.goals + player.assists,
+            reverse=True
+        )
+
 if __name__ == "__main__":
     main()
