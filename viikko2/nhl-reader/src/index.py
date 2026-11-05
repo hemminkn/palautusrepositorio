@@ -34,9 +34,9 @@ class PlayerStats:
             if player.nationality == nationality:
                 n_players.append(player)
 
-        top_players = sorted(n_players, key=lambda player: player.goals+player.assists, reverse=True)
+        top_playas = sorted(n_players, key=lambda player: player.goals+player.assists, reverse=True)
 
-        return top_players
+        return top_playas
 
 if __name__ == "__main__":
     main()
