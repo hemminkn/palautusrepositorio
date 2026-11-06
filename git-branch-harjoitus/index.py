@@ -16,3 +16,4 @@ print(f"lukujen {x} ja {y} tulo on {tulo(x, y)}") #muutos bugikorjauksessa
 
 logger("lopetetaan")
 print("goodbye!")
+print("and goodnight!")
