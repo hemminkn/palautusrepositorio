@@ -5,6 +5,7 @@ from summa import summa
 from erotus import erotus
 from tulo import tulo
 
+print("welcome!")
 logger("aloitetaan ohjelma")
 
 x = int(input("luku 1: "))
