@@ -29,6 +29,9 @@ def redirect_to_register():
 def redirect_to_ohtu():
     return redirect(url_for("render_ohtu"))
 
+def redirect_to_starting_page():
+    return redirect(url_for("render_home"))
+
 
 @app.route("/")
 def render_home():
