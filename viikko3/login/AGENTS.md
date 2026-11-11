@@ -7,26 +7,24 @@ This file provides essential instructions and conventions for AI coding agents w
 
 ## Project Overview
 - **Type:** Flask web application with user authentication and registration
-- **Project tool:** `uv` is used to manage the Python environment and dependencies
 - **Location:** All main source code is under `src/`
 - **Testing:** Robot Framework tests in `src/tests/`
 
 ## Build & Run
 - **Run the app:**
+  - From `src/`, run: `python3 index.py`
   - From the project root, use: `uv run --python 3.14 python src/index.py`
   - Or from `src/`, use: `uv run python index.py`
   - The app starts on `http://localhost:5001`
 - **Dependencies:**
-  - Managed via `pyproject.toml` and `uv`
-  - Runtime dependency includes Flask; dev dependencies include Robot Framework and Browser packages
-  - Use `uv sync` to install/update the project environment as needed
+  - Standard Python packages (Flask, requests)
+  - No explicit requirements.txt, but see `pyproject.toml` for project metadata
 
 ## Testing
 - **Test framework:** Robot Framework
 - **Test location:** `src/tests/`
 - **Run tests:**
-  - From the project root, run: `uv run robot src/tests/`
-  - If you need a specific Robot file, use `uv run robot src/tests/login.robot`
+  - From the project root, run: `robot src/tests/`
 - **Test setup:**
   - Uses custom `AppLibrary.py` for backend resets and user creation
   - Browser automation via `Browser` library (see `resource.robot`)
