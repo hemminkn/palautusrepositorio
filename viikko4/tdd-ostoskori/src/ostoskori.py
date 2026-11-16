@@ -1,4 +1,5 @@
 from tuote import Tuote
+from ostos import Ostos
 
 class Ostoskori:
     def __init__(self):
@@ -18,7 +19,7 @@ class Ostoskori:
         # kertoo korissa olevien ostosten yhteenlasketun hinnan
 
     def lisaa_tuote(self, lisattava: Tuote):
-        self._tuotteet.append(lisattava)
+        self._tuotteet.append(Ostos(lisattava))
         # lisää tuotteen
 
     def poista_tuote(self, poistettava: Tuote):
