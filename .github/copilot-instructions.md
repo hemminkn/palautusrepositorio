@@ -47,6 +47,7 @@ There is no dedicated lint step for this project. The repo does not currently in
 
 # Rules for Copilot
 - Tests executed with uv run pytest
-- Code of ostos.py and tuote.py should not be changed
-- Tests should not be edited unless explicitly asked
-- Always implement absolutely minimal code that makes the tests pass
+- Code of ostos.py and tuote.py should not be changed under any circumstances
+- Tests should NOT be edited unless explicitly asked
+- ALWAYS implement absolutely minimal code that makes the tests pass
+- these rules need to be followed!
