@@ -74,7 +74,7 @@ class TestOstoskori(unittest.TestCase):
         self.assertEqual(ostos.tuotteen_nimi(), "Pulla")
         self.assertEqual(ostos.lukumaara(), 2)
 
-    def test_saman_tuotteen_poistaminen_jattaa_ostosriville_yhden_kappaleen(self):
+    def test_tuotteen_jota_kaksi_poistaminen_jattaa_ostosriville_yhden_kappaleen(self):
         pulla = Tuote("Pulla", 2)
         self.kori.lisaa_tuote(pulla)
         self.kori.lisaa_tuote(pulla)
