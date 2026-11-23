@@ -16,40 +16,30 @@ class TennisGame:
         temp_score = 0
 
         if self.m_score1 == self.m_score2:
-            if self.m_score1 == 0:
-                score = "Love-All"
-            elif self.m_score1 == 1:
-                score = "Fifteen-All"
-            elif self.m_score1 == 2:
-                score = "Thirty-All"
-            else:
-                score = "Deuce"
+            score = self.equal_scores()
+
         elif self.m_score1 >= 4 or self.m_score2 >= 4:
-            minus_result = self.m_score1 - self. m_score2
+            score = self.score_at_least_four()
 
-            if minus_result == 1:
-                score = "Advantage player1"
-            elif minus_result == -1:
-                score = "Advantage player2"
-            elif minus_result >= 2:
-                score = "Win for player1"
-            else:
-                score = "Win for player2"
         else:
-            for i in range(1, 3):
-                if i == 1:
-                    temp_score = self.m_score1
-                else:
-                    score = score + "-"
-                    temp_score = self.m_score2
-
-                if temp_score == 0:
-                    score = score + "Love"
-                elif temp_score == 1:
-                    score = score + "Fifteen"
-                elif temp_score == 2:
-                    score = score + "Thirty"
-                elif temp_score == 3:
-                    score = score + "Forty"
+            score = self.standard_scoring()
 
         return score
+
+    def equal_scores(self):
+        score_names = ["Love-All", "Fifteen-All", "Thirty-All", "Deuce"]
+        if self.m_score1 <= 2:
+            return score_names[self.m_score1]
+        return score_names[3]
+
+    def score_at_least_four(self):
+        score_diff = self.m_score1 - self. m_score2
+        advantage = {-1: "Advantage player2", 1: "Advantage player1"}
+        if score_diff < 0:
+            return advantage[score_diff] if score_diff == -1 else "Win for player2"
+        return advantage[score_diff] if score_diff == 1 else "Win for player1"
+
+    def standard_scoring(self):
+        score_names = ["Love", "Fifteen", "Thirty", "Forty"]
+        return f"{score_names[self.m_score1]}-{score_names[self.m_score2]}"
+
